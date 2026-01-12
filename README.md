@@ -1,100 +1,134 @@
-# SaaS Unit Economics Calculator
+# 📊 Калькулятор юнит-экономики SaaS
 
-A professional web calculator for analyzing B2B SaaS business unit economics, built with React, TypeScript, and Tailwind CSS.
+Профессиональный веб-калькулятор для анализа юнит-экономики B2B SaaS бизнеса.
 
-## Features
+## 🚀 Демо
 
-- **Real-time Calculations**: Instant metric updates as you change input parameters
-- **Comprehensive Metrics**: LTV, CAC Ratio, Payback Period, Unit Economics, and Break-even Point
-- **Interactive Visualizations**:
-  - Cumulative profit over 24 months
-  - LTV vs CAC comparison chart
-  - Monthly revenue vs cost analysis with churn impact
-- **Health Indicators**: Color-coded business health status based on industry benchmarks
-- **Data Export**: Download your analysis results as JSON
-- **Mobile-First Design**: Fully responsive layout for all devices
-- **Input Validation**: Real-time form validation with helpful error messages
+🔗 **[Открыть калькулятор](https://anastasiahuman.github.io/Unitcalculator/)**
 
-## Tech Stack
+## ✨ Возможности
 
-- **React 18** with TypeScript for type safety
-- **Vite** for blazing fast development
-- **Tailwind CSS** for modern, utility-first styling
-- **Recharts** for beautiful, responsive data visualizations
+### 📈 Расчет ключевых метрик
+- **LTV (Lifetime Value)** - ожидаемый доход от клиента
+- **CAC (Customer Acquisition Cost)** - стоимость привлечения клиента
+- **LTV/CAC Ratio** - соотношение ценности к затратам
+- **Период окупаемости** - время возврата инвестиций
+- **Точка безубыточности** - месяц выхода на прибыль
+- **Юнит-экономика** - прибыль с одного клиента
 
-## Installation
+### 📊 Интерактивные графики
+1. **Накопительная прибыль** - динамика прибыли за 24 месяца
+2. **Сравнение LTV и CAC** - визуальное соотношение метрик
+3. **Доход vs Расходы** - влияние оттока на финансы
+4. **Когортный анализ** - удержание клиентов со временем ⭐ НОВОЕ!
+
+### 💼 Индикаторы здоровья бизнеса
+- 🟢 **Отлично** (LTV/CAC ≥ 3) - сильная юнит-экономика
+- 🔵 **Хорошо** (LTV/CAC ≥ 2) - здоровая бизнес-модель
+- 🟡 **Внимание** (LTV/CAC ≥ 1) - требуется улучшение
+- 🔴 **Критично** (LTV/CAC < 1) - неустойчивая модель
+
+### 📤 Экспорт результатов
+- **PDF** - полный отчет с графиками ⭐ НОВОЕ!
+- **JSON** - данные для дальнейшей обработки
+
+### 🎯 Дополнительно
+- ✅ Real-time расчеты - мгновенное обновление
+- ✅ Валидация входных данных
+- ✅ Адаптивный дизайн - работает на всех устройствах
+- ✅ Интерфейс на русском языке
+
+## 🛠️ Технологии
+
+- **React 19** - UI библиотека
+- **TypeScript** - типизация
+- **Vite** - сборщик
+- **Tailwind CSS** - стилизация
+- **Recharts** - графики
+- **html2canvas + jsPDF** - экспорт в PDF
+
+## 💻 Локальный запуск
 
 ```bash
-# Install dependencies
+# Клонировать репозиторий
+git clone https://github.com/Anastasiahuman/Unitcalculator.git
+cd Unitcalculator
+
+# Установить зависимости
 npm install
 
-# Start development server
+# Запустить dev-сервер
 npm run dev
 
-# Build for production
+# Открыть в браузере
+http://localhost:5173
+```
+
+## 📦 Production сборка
+
+```bash
+# Собрать проект
 npm run build
 
-# Preview production build
+# Предпросмотр сборки
 npm run preview
 ```
 
-## Usage
+## 📝 Использование
 
-1. Enter your SaaS business parameters:
-   - CAC (Customer Acquisition Cost)
-   - MRR (Monthly Recurring Revenue per customer)
-   - Churn Rate (%)
-   - Gross Margin (%)
-   - Operational Expenses per customer/month
+1. **Введите параметры** вашего SaaS бизнеса:
+   - CAC - стоимость привлечения клиента
+   - MRR - месячный доход с клиента
+   - Churn Rate - процент оттока клиентов
+   - Gross Margin - валовая маржа
+   - OPEX - операционные расходы
 
-2. View automatically calculated metrics:
-   - Lifetime Value (LTV)
-   - LTV/CAC Ratio
-   - Payback Period
-   - Unit Economics (Profit per customer)
-   - Break-even Point
+2. **Анализируйте результаты**:
+   - Смотрите рассчитанные метрики
+   - Изучайте графики и тренды
+   - Оценивайте здоровье бизнеса
 
-3. Analyze visualizations to understand your business trajectory
+3. **Экспортируйте отчет**:
+   - PDF для презентаций
+   - JSON для обработки данных
 
-4. Export results as JSON for further analysis or record-keeping
+## 🎯 Для кого
 
-## Project Structure
+- 🚀 B2B SaaS стартапы
+- 💼 Инвесторы и аналитики
+- 📈 Финансовые консультанты
+- 🎓 Предприниматели (планирование)
+
+## 📊 Формулы
 
 ```
-src/
-├── components/
-│   ├── Calculator.tsx      # Input form component
-│   ├── MetricsDisplay.tsx  # Calculated metrics display
-│   └── Charts.tsx          # Data visualizations
-├── utils/
-│   ├── types.ts           # TypeScript type definitions
-│   └── calculations.ts    # Business logic and formulas
-└── App.tsx                # Main application component
+LTV = (MRR × Gross Margin%) / Churn Rate%
+
+LTV/CAC Ratio = LTV / CAC
+
+Payback Period = CAC / (MRR × Gross Margin%)
+
+Unit Economics = LTV - CAC
+
+Break-even = Первый месяц с положительной прибылью
 ```
 
-## Key Metrics Explained
+## 🤝 Вклад в проект
 
-- **LTV (Lifetime Value)**: Expected revenue from a customer over their lifetime
-  - Formula: `MRR × Gross Margin / Churn Rate`
+Приветствуются любые улучшения! Создайте issue или pull request.
 
-- **LTV/CAC Ratio**: Efficiency of customer acquisition
-  - Benchmark: 3:1 or higher for healthy SaaS businesses
+## 📄 Лицензия
 
-- **Payback Period**: Months to recover customer acquisition cost
-  - Benchmark: < 12 months for optimal cash flow
+MIT License - свободно используйте в своих проектах.
 
-- **Unit Economics**: Profit per customer after all costs
-  - Formula: `LTV - CAC`
+## 👨‍💻 Автор
 
-## Development
+**Anastasia Amanova**
 
-Built with modern best practices:
-- TypeScript for type safety
-- Component-based architecture
-- Real-time validation
-- Responsive design with Tailwind CSS
-- Clean, commented code following industry standards
+- LinkedIn: [Anastasia Amanova](https://www.linkedin.com/in/anastasia-amanova-ab49997a)
+- Telegram: [@anastasiahuman](https://t.me/anastasiahuman)
+- GitHub: [@Anastasiahuman](https://github.com/Anastasiahuman)
 
-## License
+---
 
-MIT
+⭐ Если проект полезен, поставьте звезду на GitHub!

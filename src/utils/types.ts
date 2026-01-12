@@ -33,6 +33,8 @@ export interface MonthlyData {
   cumulativeProfit: number;
   monthlyRevenue: number;
   monthlyCost: number;
+  retentionRate?: number; // Процент удержания клиентов
+  activeCustomers?: number; // Количество активных клиентов
 }
 
 /**

@@ -19,15 +19,15 @@ const Calculator: React.FC<CalculatorProps> = ({ onInputChange }) => {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Real-time validation and propagation
+  // Валидация и обновление в реальном времени
   useEffect(() => {
     const newErrors: Record<string, string> = {};
 
-    if (inputs.cac <= 0) newErrors.cac = 'Must be greater than 0';
-    if (inputs.mrr <= 0) newErrors.mrr = 'Must be greater than 0';
-    if (inputs.churnRate < 0 || inputs.churnRate > 100) newErrors.churnRate = 'Must be between 0 and 100';
-    if (inputs.grossMargin < 0 || inputs.grossMargin > 100) newErrors.grossMargin = 'Must be between 0 and 100';
-    if (inputs.opex < 0) newErrors.opex = 'Must be greater than or equal to 0';
+    if (inputs.cac <= 0) newErrors.cac = 'Должно быть больше 0';
+    if (inputs.mrr <= 0) newErrors.mrr = 'Должно быть больше 0';
+    if (inputs.churnRate < 0 || inputs.churnRate > 100) newErrors.churnRate = 'Должно быть от 0 до 100';
+    if (inputs.grossMargin < 0 || inputs.grossMargin > 100) newErrors.grossMargin = 'Должно быть от 0 до 100';
+    if (inputs.opex < 0) newErrors.opex = 'Должно быть больше или равно 0';
 
     setErrors(newErrors);
 
@@ -80,50 +80,50 @@ const Calculator: React.FC<CalculatorProps> = ({ onInputChange }) => {
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
       <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">
-        Input Parameters
+        Входные параметры
       </h2>
 
       <div className="space-y-2">
         <InputField
-          label="CAC (Customer Acquisition Cost)"
+          label="CAC (Стоимость привлечения клиента)"
           field="cac"
           unit="$"
-          description="Total cost to acquire one customer"
+          description="Полная стоимость привлечения одного клиента"
         />
 
         <InputField
-          label="MRR (Monthly Recurring Revenue)"
+          label="MRR (Ежемесячный доход)"
           field="mrr"
-          unit="$/month"
-          description="Average monthly revenue per customer"
+          unit="$/мес"
+          description="Средний месячный доход с одного клиента"
         />
 
         <InputField
-          label="Churn Rate"
+          label="Отток клиентов (Churn Rate)"
           field="churnRate"
           unit="%"
-          description="Monthly customer attrition rate"
+          description="Месячный процент оттока клиентов"
         />
 
         <InputField
-          label="Gross Margin"
+          label="Валовая маржа"
           field="grossMargin"
           unit="%"
-          description="Revenue minus direct costs"
+          description="Доход минус прямые затраты"
         />
 
         <InputField
-          label="Operational Expenses"
+          label="Операционные расходы"
           field="opex"
-          unit="$/month"
-          description="Monthly operational costs per customer"
+          unit="$/мес"
+          description="Месячные операционные расходы на клиента"
         />
       </div>
 
       {Object.keys(errors).length > 0 && (
         <div className="mt-6 p-4 bg-red-50 border-l-4 border-red-500 rounded">
           <p className="text-sm text-red-700 font-medium">
-            Please correct the errors above to see calculations
+            Пожалуйста, исправьте ошибки выше, чтобы увидеть расчеты
           </p>
         </div>
       )}

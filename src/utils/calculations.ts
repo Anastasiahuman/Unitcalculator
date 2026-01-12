@@ -54,6 +54,7 @@ export const calculateMonthlyData = (inputs: InputParams): MonthlyData[] => {
 
   const data: MonthlyData[] = [];
   let cumulativeProfit = -cac; // Start with negative CAC
+  const initialCustomers = 100; // Начинаем со 100 клиентов для когортного анализа
 
   for (let month = 1; month <= 24; month++) {
     // Calculate retention rate (customers remaining)
@@ -66,11 +67,16 @@ export const calculateMonthlyData = (inputs: InputParams): MonthlyData[] => {
 
     cumulativeProfit += netMonthlyProfit;
 
+    // Рассчитываем количество активных клиентов
+    const activeCustomers = initialCustomers * retentionRate;
+
     data.push({
       month,
       cumulativeProfit: parseFloat(cumulativeProfit.toFixed(2)),
       monthlyRevenue: parseFloat(monthlyRevenue.toFixed(2)),
       monthlyCost: parseFloat(monthlyCost.toFixed(2)),
+      retentionRate: parseFloat((retentionRate * 100).toFixed(2)),
+      activeCustomers: parseFloat(activeCustomers.toFixed(1)),
     });
   }
 

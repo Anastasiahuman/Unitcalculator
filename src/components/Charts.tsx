@@ -41,7 +41,7 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-white p-4 border-2 border-gray-300 rounded-lg shadow-lg">
-          <p className="font-semibold text-gray-800 mb-2">Month {label}</p>
+          <p className="font-semibold text-gray-800 mb-2">Месяц {label}</p>
           {payload.map((entry: any, index: number) => (
             <p key={index} className="text-sm" style={{ color: entry.color }}>
               {entry.name}: {formatCurrency(entry.value)}
@@ -58,10 +58,10 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
       {/* Cumulative Profit Chart */}
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          Cumulative Profit Over 24 Months
+          Накопительная прибыль за 24 месяца
         </h2>
         <p className="text-sm text-gray-600 mb-6">
-          Track how profit accumulates over time, accounting for CAC, churn, and recurring revenue
+          Отслеживайте, как накапливается прибыль с учетом CAC, оттока и регулярного дохода
         </p>
 
         <ResponsiveContainer width="100%" height={400}>
@@ -69,11 +69,11 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
             <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
             <XAxis
               dataKey="month"
-              label={{ value: 'Month', position: 'insideBottom', offset: -5 }}
+              label={{ value: 'Месяц', position: 'insideBottom', offset: -5 }}
               stroke="#6b7280"
             />
             <YAxis
-              label={{ value: 'Profit ($)', angle: -90, position: 'insideLeft' }}
+              label={{ value: 'Прибыль ($)', angle: -90, position: 'insideLeft' }}
               stroke="#6b7280"
               tickFormatter={formatCurrency}
             />
@@ -87,24 +87,24 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
               strokeWidth={3}
               dot={{ fill: '#3b82f6', r: 4 }}
               activeDot={{ r: 6 }}
-              name="Cumulative Profit"
+              name="Накопительная прибыль"
             />
           </LineChart>
         </ResponsiveContainer>
 
         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <p className="text-xs text-blue-700 font-semibold mb-1">INITIAL INVESTMENT</p>
+            <p className="text-xs text-blue-700 font-semibold mb-1">НАЧАЛЬНЫЕ ИНВЕСТИЦИИ</p>
             <p className="text-lg font-bold text-blue-900">{formatCurrency(-inputs.cac)}</p>
           </div>
           <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-            <p className="text-xs text-green-700 font-semibold mb-1">MONTH 12 PROFIT</p>
+            <p className="text-xs text-green-700 font-semibold mb-1">ПРИБЫЛЬ ЗА 12 МЕС</p>
             <p className="text-lg font-bold text-green-900">
               {formatCurrency(monthlyData[11]?.cumulativeProfit || 0)}
             </p>
           </div>
           <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-            <p className="text-xs text-purple-700 font-semibold mb-1">MONTH 24 PROFIT</p>
+            <p className="text-xs text-purple-700 font-semibold mb-1">ПРИБЫЛЬ ЗА 24 МЕС</p>
             <p className="text-lg font-bold text-purple-900">
               {formatCurrency(monthlyData[23]?.cumulativeProfit || 0)}
             </p>
@@ -115,10 +115,10 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
       {/* LTV vs CAC Comparison */}
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          LTV vs CAC Comparison
+          Сравнение LTV и CAC
         </h2>
         <p className="text-sm text-gray-600 mb-6">
-          Customer Lifetime Value should be significantly higher than Customer Acquisition Cost
+          Ценность клиента должна значительно превышать стоимость его привлечения
         </p>
 
         <ResponsiveContainer width="100%" height={300}>
@@ -142,12 +142,12 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
           <div className="text-center">
             <div className="w-4 h-4 bg-red-500 rounded mx-auto mb-2"></div>
             <p className="text-sm font-semibold text-gray-700">CAC</p>
-            <p className="text-xs text-gray-500">Cost to Acquire</p>
+            <p className="text-xs text-gray-500">Стоимость привлечения</p>
           </div>
           <div className="text-center">
             <div className="w-4 h-4 bg-green-500 rounded mx-auto mb-2"></div>
             <p className="text-sm font-semibold text-gray-700">LTV</p>
-            <p className="text-xs text-gray-500">Lifetime Value</p>
+            <p className="text-xs text-gray-500">Ценность клиента</p>
           </div>
         </div>
       </div>
@@ -155,10 +155,10 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
       {/* Monthly Revenue vs Cost */}
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          Monthly Revenue vs Cost (with Churn)
+          Месячный доход vs Расходы (с учетом оттока)
         </h2>
         <p className="text-sm text-gray-600 mb-6">
-          Shows how revenue and costs decrease over time due to customer churn
+          Показывает, как доход и расходы снижаются со временем из-за оттока клиентов
         </p>
 
         <ResponsiveContainer width="100%" height={350}>
@@ -166,11 +166,11 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
             <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
             <XAxis
               dataKey="month"
-              label={{ value: 'Month', position: 'insideBottom', offset: -5 }}
+              label={{ value: 'Месяц', position: 'insideBottom', offset: -5 }}
               stroke="#6b7280"
             />
             <YAxis
-              label={{ value: 'Amount ($)', angle: -90, position: 'insideLeft' }}
+              label={{ value: 'Сумма ($)', angle: -90, position: 'insideLeft' }}
               stroke="#6b7280"
               tickFormatter={formatCurrency}
             />
@@ -182,7 +182,7 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
               stroke="#10b981"
               strokeWidth={2}
               dot={{ fill: '#10b981', r: 3 }}
-              name="Monthly Revenue"
+              name="Месячный доход"
             />
             <Line
               type="monotone"
@@ -190,15 +190,122 @@ const Charts: React.FC<ChartsProps> = ({ monthlyData, inputs }) => {
               stroke="#f59e0b"
               strokeWidth={2}
               dot={{ fill: '#f59e0b', r: 3 }}
-              name="Monthly Cost"
+              name="Месячные расходы"
             />
           </LineChart>
         </ResponsiveContainer>
 
         <div className="mt-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
           <p className="text-sm text-amber-800">
-            <strong>Note:</strong> Both revenue and costs decline over time due to the {inputs.churnRate}% monthly churn rate.
-            This visualization helps identify when customer retention becomes critical.
+            <strong>Примечание:</strong> И доход, и расходы снижаются со временем из-за {inputs.churnRate}% месячного оттока.
+            Эта визуализация помогает определить, когда удержание клиентов становится критичным.
+          </p>
+        </div>
+      </div>
+
+      {/* Cohort Analysis - Customer Retention */}
+      <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          Когортный анализ: Удержание клиентов
+        </h2>
+        <p className="text-sm text-gray-600 mb-6">
+          Показывает, как удерживаются клиенты со временем. Начинаем со 100 клиентов.
+        </p>
+
+        <ResponsiveContainer width="100%" height={350}>
+          <LineChart data={monthlyData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <XAxis
+              dataKey="month"
+              label={{ value: 'Месяц', position: 'insideBottom', offset: -5 }}
+              stroke="#6b7280"
+            />
+            <YAxis
+              yAxisId="left"
+              label={{ value: 'Активные клиенты', angle: -90, position: 'insideLeft' }}
+              stroke="#6b7280"
+            />
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              label={{ value: 'Удержание (%)', angle: 90, position: 'insideRight' }}
+              stroke="#6b7280"
+            />
+            <Tooltip
+              content={({ active, payload, label }) => {
+                if (active && payload && payload.length) {
+                  return (
+                    <div className="bg-white p-4 border-2 border-gray-300 rounded-lg shadow-lg">
+                      <p className="font-semibold text-gray-800 mb-2">Месяц {label}</p>
+                      {payload.map((entry: any, index: number) => (
+                        <p key={index} className="text-sm" style={{ color: entry.color }}>
+                          {entry.name}: {entry.name === 'Активные клиенты' ? entry.value.toFixed(1) : `${entry.value.toFixed(1)}%`}
+                        </p>
+                      ))}
+                    </div>
+                  );
+                }
+                return null;
+              }}
+            />
+            <Legend />
+            <Line
+              yAxisId="left"
+              type="monotone"
+              dataKey="activeCustomers"
+              stroke="#8b5cf6"
+              strokeWidth={3}
+              dot={{ fill: '#8b5cf6', r: 3 }}
+              name="Активные клиенты"
+            />
+            <Line
+              yAxisId="right"
+              type="monotone"
+              dataKey="retentionRate"
+              stroke="#ec4899"
+              strokeWidth={2}
+              dot={{ fill: '#ec4899', r: 3 }}
+              strokeDasharray="5 5"
+              name="Удержание (%)"
+            />
+          </LineChart>
+        </ResponsiveContainer>
+
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+            <p className="text-xs text-purple-700 font-semibold mb-1">УДЕРЖАНИЕ ЗА 6 МЕС</p>
+            <p className="text-lg font-bold text-purple-900">
+              {monthlyData[5]?.retentionRate?.toFixed(1)}%
+            </p>
+            <p className="text-xs text-purple-600 mt-1">
+              {monthlyData[5]?.activeCustomers?.toFixed(0)} клиентов
+            </p>
+          </div>
+          <div className="bg-pink-50 p-4 rounded-lg border border-pink-200">
+            <p className="text-xs text-pink-700 font-semibold mb-1">УДЕРЖАНИЕ ЗА 12 МЕС</p>
+            <p className="text-lg font-bold text-pink-900">
+              {monthlyData[11]?.retentionRate?.toFixed(1)}%
+            </p>
+            <p className="text-xs text-pink-600 mt-1">
+              {monthlyData[11]?.activeCustomers?.toFixed(0)} клиентов
+            </p>
+          </div>
+          <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+            <p className="text-xs text-indigo-700 font-semibold mb-1">УДЕРЖАНИЕ ЗА 24 МЕС</p>
+            <p className="text-lg font-bold text-indigo-900">
+              {monthlyData[23]?.retentionRate?.toFixed(1)}%
+            </p>
+            <p className="text-xs text-indigo-600 mt-1">
+              {monthlyData[23]?.activeCustomers?.toFixed(0)} клиентов
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-4 p-4 bg-purple-50 rounded-lg border border-purple-200">
+          <p className="text-sm text-purple-800">
+            <strong>💡 Совет:</strong> Если удержание падает ниже 50% за первый год,
+            это сигнал инвестировать в customer success и улучшение продукта.
+            Высокое удержание (более 70% за год) - признак product-market fit.
           </p>
         </div>
       </div>

@@ -37,10 +37,10 @@ const MetricsDisplay: React.FC<MetricsDisplayProps> = ({ metrics, healthStatus }
   };
 
   const getLTVCACHealthText = (ratio: number): string => {
-    if (ratio >= 3) return 'Excellent - Strong unit economics';
-    if (ratio >= 2) return 'Good - Healthy business model';
-    if (ratio >= 1) return 'Warning - Needs improvement';
-    return 'Critical - Unsustainable';
+    if (ratio >= 3) return 'Отлично - Сильная юнит-экономика';
+    if (ratio >= 2) return 'Хорошо - Здоровая бизнес-модель';
+    if (ratio >= 1) return 'Внимание - Требуется улучшение';
+    return 'Критично - Неустойчивая модель';
   };
 
   const formatCurrency = (value: number): string => {
@@ -82,12 +82,12 @@ const MetricsDisplay: React.FC<MetricsDisplayProps> = ({ metrics, healthStatus }
           <div>
             <div className="flex items-center gap-3 mb-2">
               <span className={`inline-block w-3 h-3 rounded-full ${getHealthBadgeColor(healthStatus)} animate-pulse`}></span>
-              <h2 className="text-xl font-bold">Business Health: {healthStatus.toUpperCase()}</h2>
+              <h2 className="text-xl font-bold">Здоровье бизнеса: {healthStatus.toUpperCase()}</h2>
             </div>
             <p className="text-sm font-medium">{getLTVCACHealthText(metrics.ltvCacRatio)}</p>
           </div>
           <div className="text-right">
-            <p className="text-sm text-gray-600 mb-1">LTV/CAC Ratio</p>
+            <p className="text-sm text-gray-600 mb-1">Соотношение LTV/CAC</p>
             <p className="text-4xl font-bold">{formatNumber(metrics.ltvCacRatio)}</p>
           </div>
         </div>
@@ -96,35 +96,35 @@ const MetricsDisplay: React.FC<MetricsDisplayProps> = ({ metrics, healthStatus }
       {/* Metrics Grid */}
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">
-          Calculated Metrics
+          Рассчитанные метрики
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <MetricCard
             title="Lifetime Value (LTV)"
             value={formatCurrency(metrics.ltv)}
-            subtitle="Expected revenue per customer"
+            subtitle="Ожидаемый доход с клиента"
             icon="💰"
           />
 
           <MetricCard
-            title="Unit Economics"
+            title="Юнит-экономика"
             value={formatCurrency(metrics.unitEconomics)}
-            subtitle={metrics.unitEconomics > 0 ? 'Profitable' : 'Unprofitable'}
+            subtitle={metrics.unitEconomics > 0 ? 'Прибыльно' : 'Убыточно'}
             icon={metrics.unitEconomics > 0 ? '📈' : '📉'}
           />
 
           <MetricCard
-            title="Payback Period"
+            title="Период окупаемости"
             value={formatNumber(metrics.paybackPeriod, 1)}
-            subtitle={`${formatNumber(metrics.paybackPeriod, 1)} months to recover CAC`}
+            subtitle={`${formatNumber(metrics.paybackPeriod, 1)} мес. для возврата CAC`}
             icon="⏱️"
           />
 
           <MetricCard
-            title="Break-Even Point"
-            value={metrics.breakEvenPoint > 0 ? `Month ${metrics.breakEvenPoint}` : 'Never'}
-            subtitle={metrics.breakEvenPoint > 0 ? 'When profit turns positive' : 'Never reaches profitability'}
+            title="Точка безубыточности"
+            value={metrics.breakEvenPoint > 0 ? `Месяц ${metrics.breakEvenPoint}` : 'Никогда'}
+            subtitle={metrics.breakEvenPoint > 0 ? 'Когда прибыль станет положительной' : 'Не достигается'}
             icon={metrics.breakEvenPoint > 0 ? '🎯' : '⚠️'}
           />
         </div>
@@ -133,36 +133,36 @@ const MetricsDisplay: React.FC<MetricsDisplayProps> = ({ metrics, healthStatus }
         <div className="mt-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
           <h3 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
             <span>💡</span>
-            <span>Key Insights</span>
+            <span>Ключевые выводы</span>
           </h3>
           <ul className="space-y-2 text-sm text-blue-800">
             <li className="flex items-start gap-2">
               <span className="mt-0.5">•</span>
               <span>
-                <strong>LTV/CAC Ratio of {formatNumber(metrics.ltvCacRatio)}:</strong>{' '}
+                <strong>Соотношение LTV/CAC {formatNumber(metrics.ltvCacRatio)}:</strong>{' '}
                 {metrics.ltvCacRatio >= 3
-                  ? 'Your customer economics are strong. Industry benchmark is 3:1 or higher.'
+                  ? 'Ваша клиентская экономика сильна. Отраслевой бенчмарк 3:1 или выше.'
                   : metrics.ltvCacRatio >= 1
-                  ? 'Consider optimizing CAC or increasing customer lifetime value.'
-                  : 'Critical: You are spending more to acquire customers than they generate in value.'}
+                  ? 'Рассмотрите оптимизацию CAC или увеличение LTV клиента.'
+                  : 'Критично: Вы тратите на привлечение клиентов больше, чем они приносят.'}
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-0.5">•</span>
               <span>
-                <strong>Payback Period:</strong>{' '}
+                <strong>Период окупаемости:</strong>{' '}
                 {metrics.paybackPeriod <= 12
-                  ? 'Excellent! Recovering CAC in under a year is ideal for SaaS.'
-                  : 'Consider reducing CAC or increasing MRR to improve cash flow.'}
+                  ? 'Отлично! Возврат CAC менее чем за год - идеально для SaaS.'
+                  : 'Рассмотрите снижение CAC или увеличение MRR для улучшения денежного потока.'}
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-0.5">•</span>
               <span>
-                <strong>Unit Economics:</strong>{' '}
+                <strong>Юнит-экономика:</strong>{' '}
                 {metrics.unitEconomics > 0
-                  ? `You make ${formatCurrency(metrics.unitEconomics)} profit per customer over their lifetime.`
-                  : 'Negative unit economics indicate an unsustainable business model.'}
+                  ? `Вы зарабатываете ${formatCurrency(metrics.unitEconomics)} прибыли с клиента за его время жизни.`
+                  : 'Отрицательная юнит-экономика указывает на неустойчивую бизнес-модель.'}
               </span>
             </li>
           </ul>
